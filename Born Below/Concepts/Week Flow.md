@@ -13,12 +13,22 @@ The core game loop operates on a weekly cycle with distinct phases.
 
 ## Phase Sequence
 
+```mermaid
+graph LR
+    PLANNING[Planning Phase] -->|Player Starts Week| EXECUTING[Executing Phase]
+    EXECUTING -->|7 Days Completed| RESULTS[Results Phase]
+    RESULTS -->|User Dismisses Summary| END_WEEK[End Week Phase]
+    END_WEEK -->|Calendar Advance & Reset| PLANNING
 ```
-PLANNING → EXECUTING → RESULTS → END_WEEK
-    ↓          ↓          ↓          ↓
- Assign     Simulate    Review     Reset
- demons     7 days      events     state
-```
+
+### Phase Overview
+
+| Phase | Duration | Player Role |
+|-------|----------|-------------|
+| Planning | Until "Execute" clicked | Active decisions |
+| Executing | 7 simulated days | React to beats |
+| Results | Until dismissed | Review outcomes |
+| End Week | Automatic | System cleanup |
 
 ## Planning Phase
 
@@ -72,11 +82,39 @@ PLANNING → EXECUTING → RESULTS → END_WEEK
 
 **Transition:** Automatically returns to PLANNING
 
+## Detailed Phase Breakdown
+
+### Executing Phase Day Loop
+
+```mermaid
+flowchart TD
+    subgraph DayLoop["Each Day (1-7)"]
+        HELL[Hell Phase: Resources] --> MISSION[Mission Phase: Meter Updates]
+        MISSION --> IDLE[Idle Phase: Unassigned Demons]
+        IDLE --> DIVINE[Divine Phase: Intervention Check]
+        DIVINE --> EVENT[Event Phase: Daily Events]
+        EVENT --> INTERRUPT{Beat Triggered?}
+        INTERRUPT -->|Yes| PAUSE[Pause for Player Choice]
+        PAUSE --> NEXT
+        INTERRUPT -->|No| NEXT[Next Day]
+    end
+```
+
+## Key Signals
+
+| Signal | Emitter | Purpose |
+|--------|---------|---------|
+| `phase_changed(phase)` | GameFlow | UI panel switching |
+| `day_completed_flow(slot)` | GameFlow | Day progress animation |
+| `week_completed_flow(week)` | GameFlow | Results phase trigger |
+| `mission_beat_triggered(data)` | SimCoordinator | Beat decision modal |
+| `week_execution_paused` | SimCoordinator | Halt for player input |
+
 ## Key Components
 
-- GameFlow (autoload) - Phase state machine
-- [[SimulationPhaseCoordinator]] - Day execution
-- WeekManager - Weekly lifecycle
+- [[GameFlow]] - Phase state machine
+- [[SimulationPhaseCoordinator]] - Day execution orchestrator
+- [[WeekManager]] - Weekly lifecycle and finalization
 
 ## Related
 

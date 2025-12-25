@@ -88,3 +88,18 @@ data/events/packs/
 - [[Week Flow]] - Event timing
 - [[Demon System]] - Demon events
 - [[Cult System]] - Cult events
+
+---
+
+## See Also
+
+### Content
+- [[Event Packs]] - Complete pack catalog (87 events)
+- [[Mission Beats]] - Beat event content
+
+### Architecture
+- [[Event Templates]] - Template classes
+- [[Services]] - Event processing services
+
+### Development
+- [[Adding a New Scheme]] - Creating beat events

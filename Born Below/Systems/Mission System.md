@@ -13,21 +13,58 @@ The tactical layer connecting demons to corruption targets. Missions run over mu
 
 ## Mission Flow
 
+```mermaid
+flowchart LR
+    OPP[Opportunity Card] --> LAUNCH[Launch Mission]
+    LAUNCH --> DAILY[Daily Execution]
+    DAILY --> BEAT{Beat Threshold?}
+    BEAT -->|Yes| CHOICE[Player Choice]
+    CHOICE --> DAILY
+    BEAT -->|No| CHECK{Leverage ≥80?}
+    CHECK -->|No| DAILY
+    CHECK -->|Yes| COMPLETE[Mission Complete]
+    COMPLETE --> REWARDS[Apply Rewards]
 ```
-Opportunity Card → Launch Mission → Daily Execution → Beat Decisions → Completion
-       ↓                ↓                 ↓                ↓              ↓
-   Select target    Assign demon    Update meters    Player choices   Rewards
+
+### Daily Execution Sequence
+
+```mermaid
+sequenceDiagram
+    participant SC as SimCoordinator
+    participant ME as MissionExecutor
+    participant MS as MeterService
+    participant BS as BeatService
+
+    SC->>ME: execute_day(state, context)
+    ME->>MS: calculate_daily_deltas()
+    MS-->>ME: {leverage, suspicion, fatigue}
+    ME->>MS: apply_deltas(state)
+    ME->>MS: detect_zone_crossings()
+    MS-->>ME: crossings[]
+    ME->>BS: filter_available_beats()
+    BS-->>ME: triggered_beats[]
+    ME-->>SC: {deltas, beats, intervention_check}
 ```
 
 ## Mission Meters
 
-Three meters track mission state:
+Three meters track mission state (0-100 scale):
 
-| Meter | Purpose | Good/Bad |
-|-------|---------|----------|
-| **Leverage** | Progress toward corruption | Higher = better |
-| **Suspicion** | Target awareness | Lower = better |
-| **Moral Fatigue** | Target's resistance | Higher = better |
+| Meter | Purpose | Goal | Zone Thresholds |
+|-------|---------|------|-----------------|
+| **Leverage** | Progress toward corruption | Higher = better | 20/40/60/80 |
+| **Suspicion** | Target awareness | Lower = better | 20/40/60/80 |
+| **Moral Fatigue** | Target's resistance erosion | Higher = better | 20/40/60/80 |
+
+### Pressure/Subtlety Slider
+
+The slider (0.0 to 1.0) controls risk vs reward:
+
+| Slider | Leverage | Suspicion | Moral Fatigue |
+|--------|----------|-----------|---------------|
+| Subtle (0.0) | 0.6x | 0.3x | 1.6x |
+| Balanced (0.5) | 1.1x | 1.1x | 1.0x |
+| Aggressive (1.0) | 1.6x | 1.9x | 0.4x |
 
 ## Daily Execution
 
@@ -73,3 +110,20 @@ MissionStateData:
 - [[Corruption System]] - What missions affect
 - [[Demon System]] - Who runs missions
 - [[Beats]] - Decision points
+
+---
+
+## See Also
+
+### Design
+- [[Risk-Reward Balance]] - Slider and beat philosophy
+- [[Corruption Philosophy]] - Pressure and desperation
+
+### Development
+- [[Adding a New Scheme]] - Creating new missions
+- [[Common Patterns]] - Code patterns
+
+### Content
+- [[Corruption Schemes]] - All scheme definitions
+- [[Mission Beats]] - Beat content
+- [[Verbs]] - Demon abilities affecting meters

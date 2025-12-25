@@ -58,3 +58,15 @@ Characters may be **vulnerable** to specific sins:
 - [[Demon System]] - How demons use stats
 - [[Corruption System]] - How needs work
 - [[Mission System]] - Pressure application
+
+---
+
+## See Also
+
+### Design
+- [[Corruption Philosophy]] - Why seven sins map to needs
+
+### Content
+- [[Starting Demons]] - Demon stat profiles
+- [[Demo Targets]] - Character vulnerability profiles
+- [[Training Activities]] - Stat improvement options

@@ -6,56 +6,56 @@ status: stable
 ---
 # RealmFacade
 
-Unified interface for realm and entity stat operations.
+Public API for realm and entity operations. Manages high-level realm initialization and stat modifications.
 
 ## Purpose
 
-Provides access to Hell/Mortal realms, entity stat operations, and effect application.
+Provides access to Hell and Mortal realm coordinators, entity stat operations, and effect application across realms.
 
 ## Dependencies
 
-- [[RealmCoordinator]] - Realm initialization, accessors
-- [[RosterManager]] - Entity lookups
-- EffectProcessor - Effect application
-- [[CorruptionManager]] - Late-bound
+- `_realm_coordinator` - RealmCoordinator
+- `_roster_manager` - RosterManager
+- `_corruption_manager` - CorruptionManager
+- `_game_state` - GameState
 
 ## Key Responsibilities
 
-### Realm Accessors
-- `get_realm()` - Legacy realm (backward compat)
-- `get_hell_realm()` - Hell realm
-- `get_mortal_realm()` - Mortal realm
-- `get_realm_coordinator()` - Advanced operations
+### Realm Access
+- `get_hell_realm()` - Access Hell realm state
+- `get_mortal_realm()` - Access Mortal realm state
+- `get_realm_coordinator()` - Direct coordinator access
+- `initialize_realms() -> void` - Initialize both realms
 
-### Realm Initialization
-- `initialize_realms()` - Initialize dual-realm system
-
-### Entity Stat Operations
-- `set_entity_stat(entity_id, stat, value)` - Set with notification
-- `adjust_entity_stat(entity_id, stat, delta)` - Adjust with notification
+### Entity Stats
+- `set_entity_stat(entity_id: String, stat: String, value: int) -> void`
+- `adjust_entity_stat(entity_id: String, stat: String, delta: int) -> void`
 
 ### Effect Application
-- `apply_effect(effect)` - Single effect
-- `apply_multiple_effects(effects)` - Multiple effects
+- `apply_effect(effect: Dictionary) -> void` - Apply single effect
+- `apply_multiple_effects(effects: Array) -> void` - Apply effect batch
 
-## Dual Realm System
-
-The game has two realms:
-- **Hell Realm** - Where demons reside, soul essence stored
-- **Mortal Realm** - Where corruption targets live
-
-## Effect Dictionary Format
+## Usage
 
 ```gdscript
-{
-    "type": "stat_change",
-    "target": "demon_id",
-    "stat": "wrath",
-    "value": 5
-}
+var realm_facade = GameState.get_realm_facade()
+
+# Get soul essence (via realm coordinator)
+var souls = realm_facade.get_realm_coordinator().get_soul_essence()
+
+# Adjust demon stat
+realm_facade.adjust_entity_stat(demon_id, "wrath", 5)
+
+# Apply effects from event
+realm_facade.apply_multiple_effects([
+    {"type": "stat", "target": demon_id, "stat": "pride", "delta": 3},
+    {"type": "resource", "resource": "soul_essence", "delta": 50}
+])
 ```
 
 ## Related
 
-- [[RealmCoordinator]] - State owner
-- [[CorruptionManager]] - Corruption state
+- [[RealmCoordinator]] - Underlying coordinator
+- [[CorruptionFacade]] - Soul essence management
+- [[DemonManagementFacade]] - Demon stat access
+- [[Economy System]] - Resource flow

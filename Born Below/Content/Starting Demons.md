@@ -146,3 +146,15 @@ Spreads consumption through voracious growth.
 - [[Demon System]] - Mechanics
 - [[Seven Sins]] - Stat system
 - [[Personality Evolution]] - Archetype effects
+
+---
+
+## See Also
+
+### Design
+- [[Demon Economy]] - Activity constraints
+- [[Corruption Philosophy]] - Matching demons to targets
+
+### Development
+- [[Adding a New Demon]] - Create new demons
+- [[Testing Guide]] - Test demon systems

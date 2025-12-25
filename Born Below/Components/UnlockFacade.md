@@ -6,62 +6,81 @@ status: stable
 ---
 # UnlockFacade
 
-Unified interface for unlock operations.
+Public API for unlock state management. Centralizes unlock logic for demons, schemes, items, and other game elements.
 
 ## Purpose
 
-Checks and applies unlocks for demons, schemes, decrees, defenses, items, and abilities.
+Provides consistent unlock checking and unlocking operations across diverse game elements, ensuring unlock state is synchronized with story flags and manager states.
 
 ## Dependencies
 
-- [[UnlockableManager]] - Unlock state, checks
-- [[RosterManager]] - Demon slot management
-- [[PlanningPhaseManager]] - Content lookups
-- [[InventoryManager]] - Item lookups
+- `_unlockable_manager` - UnlockableManager
+- `_roster_manager` - RosterManager
+- `_planning_manager` - PlanningManager
+- `_inventory_manager` - InventoryManager
 
 ## Key Responsibilities
 
 ### Decree Unlocks
-- `is_decree_unlocked(decree_id)` - Check status
-- `unlock_decree(decree_id)` - Unlock and set flag
+- `is_decree_unlocked(decree_id: String) -> bool`
+- `unlock_decree(decree_id: String) -> void`
 
 ### Defense Unlocks
-- `is_defense_unlocked(defense_id)` - Check status
-- `unlock_defense(defense_id)` - Unlock and set flag
+- `is_defense_unlocked(defense_id: String) -> bool`
+- `unlock_defense(defense_id: String) -> void`
 
 ### Demon Unlocks
-- `is_demon_unlocked(demon_id)` - Check status
-- `unlock_demon(demon_id)` - Unlock, auto-slot, set available
+- `is_demon_unlocked(demon_id: String) -> bool`
+- `unlock_demon(demon_id: String) -> void`
 
 ### Scheme Unlocks
-- `is_scheme_unlocked(scheme_id)` - Check status
-- `unlock_scheme(scheme_id)` - Unlock and set flag
-- `check_scheme_demon_requirements(scheme, roster)` - Check if any demon qualifies
+- `is_scheme_unlocked(scheme_id: String) -> bool`
+- `unlock_scheme(scheme_id: String) -> void`
 
 ### Item Unlocks
-- `is_item_unlocked(item_id)` - Check status
-- `unlock_item(item_id)` - Unlock and set flag
+- `is_item_unlocked(item_id: String) -> bool`
+- `unlock_item(item_id: String) -> void`
 
-### Character Ability Unlocks
-- `is_character_ability_unlocked(ability_id)` - Check status
-- `unlock_character_ability(ability_id)` - Unlock and set flag
+### Requirement Checking
+- `check_scheme_demon_requirements(scheme_data, roster_manager) -> Dictionary`
 
-## Unlock Pattern
+## Usage
 
-Most unlocks follow this pattern:
-1. Check `unlocked_by_default` on resource
-2. If false, check story flag `{category}.{id}.unlocked`
-3. Unlock sets the story flag to true
+```gdscript
+var unlock = GameState.get_unlock_facade()
 
-## Demon Auto-Slotting
+# Check if scheme is available
+if unlock.is_scheme_unlocked("knight_tournament_training"):
+    show_scheme_option()
 
-When `unlock_demon()` is called:
-1. Sets story flag
-2. Finds first empty, unlocked slot
-3. Assigns demon to slot
-4. Sets demon as available
+# Unlock demon after milestone
+unlock.unlock_demon("night_terror")
+
+# Check scheme requirements
+var req_check = unlock.check_scheme_demon_requirements(scheme, roster_manager)
+if req_check.met:
+    enable_scheme_button()
+else:
+    show_requirements(req_check.missing)
+```
+
+## Unlock Sources
+
+| Element | Unlocked By |
+|---------|------------|
+| Demons | Story progression, corruption milestones |
+| Schemes | Target corruption stage |
+| Items | Discovery, crafting, rewards |
+| Decrees | Story flags |
+| Defenses | Character awareness level |
+
+## Signal Connections
+
+UnlockableManager connects to `EventBus.character_corrupted` to automatically trigger corruption-based unlocks when characters advance stages.
 
 ## Related
 
-- [[StoryFacade]] - Story flags storage
-- [[UnlockableManager]] - Unlock logic
+- [[UnlockableManager]] - State owner
+- [[StoryFacade]] - Story flag checks
+- [[Demon System]] - Demon unlocks
+- [[Corruption System]] - Stage-based unlocks

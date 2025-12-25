@@ -76,3 +76,20 @@ Characters can become aware of manipulation:
 - [[Mission System]] - How corruption happens
 - [[Seven Sins]] - Stat/need mapping
 - [[Intervention Risk]] - Divine opposition
+
+---
+
+## See Also
+
+### Design
+- [[Corruption Philosophy]] - Why seven sins and needs
+- [[Risk-Reward Balance]] - Intervention mechanics
+
+### Development
+- [[Adding a New Scheme]] - Creating corruption missions
+- [[Testing Guide]] - Testing corruption flows
+
+### Content
+- [[Demo Targets]] - Knight, Queen, Bishop profiles
+- [[Corruption Schemes]] - All available schemes
+- [[Mission Beats]] - Narrative decision points

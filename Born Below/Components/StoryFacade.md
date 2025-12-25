@@ -6,56 +6,76 @@ status: stable
 ---
 # StoryFacade
 
-Unified interface for story state operations.
+Public API for persistent story state. Manages narrative flags and nested story variables.
 
 ## Purpose
 
-Manages story flags and narrative state using nested path syntax.
+Provides a unified interface for interacting with story flags and nested narrative state. Follows read-bypass pattern for fast access.
 
 ## Dependencies
 
-- [[StoryStateManager]] - Story flags, nested paths
+- `_story_state_manager` - StoryStateManager
 
 ## Key Responsibilities
 
-### Story State Operations
-- `get_story_value(path, default)` - Get value at path
-- `has_story_value(path)` - Check existence
-- `set_story_value(path, value)` - Set value
-- `increment_story_value(path, delta)` - Increment numeric
-- `clear_story_value(path)` - Remove value
+### Value Access
+- `get_story_value(path: String, default_value: Variant) -> Variant` - Get nested value
+- `has_story_value(path: String) -> bool` - Check if path exists
+- `set_story_value(path: String, value: Variant) -> Variant` - Set nested value
+- `increment_story_value(path: String, delta: int) -> int` - Increment counter
+- `clear_story_value(path: String) -> void` - Remove value
 
-### Full State
-- `get_story_state()` - Complete state dictionary
-- `set_story_state(state)` - Load from save
+### State Bulk Operations
+- `get_story_state() -> Dictionary` - Get entire state
+- `set_story_state(state: Dictionary) -> void` - Replace entire state
 
 ## Path Syntax
 
 Story values use dot-notation paths:
 
 ```gdscript
-# Set a flag
-story_facade.set_story_value("demons.asmodeus.unlocked", true)
+# Simple flags
+story.set_story_value("knight.first_encounter", true)
+story.set_story_value("bishop.corruption_started", true)
 
-# Check a flag
-if story_facade.get_story_value("quests.first_corruption.completed", false):
-    # ...
+# Nested values
+story.set_story_value("queen.schemes.betrayal_count", 3)
 
-# Increment a counter
-story_facade.increment_story_value("stats.total_corruptions")
+# Counters
+story.increment_story_value("total_corruptions", 1)
 ```
 
-## Common Paths
+## Usage
 
-| Path Pattern | Purpose |
-|-------------|---------|
-| `demons.{id}.unlocked` | Demon unlock flags |
-| `schemes.{id}.unlocked` | Scheme unlock flags |
-| `quests.{id}.completed` | Quest completion |
-| `achievements.{id}` | Achievement flags |
-| `stats.*` | Numeric counters |
+```gdscript
+var story = GameState.get_story_facade()
+
+# Check if player has seen tutorial
+if not story.has_story_value("tutorial.completed"):
+    show_tutorial()
+    story.set_story_value("tutorial.completed", true)
+
+# Track corruption milestones
+var corruptions = story.get_story_value("stats.total_corruptions", 0)
+story.set_story_value("stats.total_corruptions", corruptions + 1)
+
+# Conditional unlocks
+if story.get_story_value("knight.stage", 0) >= 2:
+    unlock_knight_schemes()
+```
+
+## Common Story Paths
+
+| Path | Type | Purpose |
+|------|------|---------|
+| `tutorial.completed` | bool | Tutorial state |
+| `[character].first_encounter` | bool | First meeting flag |
+| `[character].stage` | int | Corruption stage mirror |
+| `achievements.[id]` | bool | Achievement unlocks |
+| `stats.weeks_played` | int | Game duration |
 
 ## Related
 
 - [[StoryStateManager]] - State owner
-- [[UnlockFacade]] - Uses story flags for unlocks
+- [[Event System]] - Story-driven events
+- [[UnlockFacade]] - Story-based unlocks

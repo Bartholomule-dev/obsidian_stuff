@@ -10,6 +10,38 @@ The public API layer for game systems. Facades provide focused, cached access to
 
 ## Pattern
 
+```mermaid
+graph TD
+    subgraph UI["UI Layer"]
+        COMP[UI Components]
+        CTRL[Controllers]
+    end
+    
+    subgraph API["API Layer"]
+        FAC[Facades]
+    end
+    
+    subgraph STATE["State Layer"]
+        MGR[Managers]
+        SVC[Services]
+    end
+    
+    subgraph DATA["Data Layer"]
+        RES[Resources]
+        DICT[Dictionaries]
+    end
+    
+    COMP --> |GameState.get_*_facade| FAC
+    CTRL --> FAC
+    FAC --> |read-bypass| MGR
+    FAC --> |coordinate| SVC
+    SVC --> MGR
+    MGR --> RES
+    MGR --> DICT
+```
+
+### Access Pattern
+
 ```
 UI Components & Services
          ↓ GameState.get_*_facade()
