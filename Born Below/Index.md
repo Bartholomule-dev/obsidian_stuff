@@ -61,6 +61,17 @@ A demon-raising corruption simulator built in Godot 4.5 with GDScript.
 ### Data & Content
 - [[Data Resources]] - Resource types and locations
 
+### Game Content
+- [[Content Catalog]] - Complete content inventory
+- [[Verbs]] - Demon abilities (13+)
+- [[Corruption Schemes]] - Mission definitions (21)
+- [[Mission Beats]] - Narrative decision points (30+)
+- [[Training Activities]] - Stat improvement (14)
+- [[Explorations]] - Domain maps (5)
+- [[Tournaments]] - Combat gauntlets (3)
+- [[Weekly Activities]] - Rest and recovery (4)
+- [[Cult Situations]] - Cult narrative events
+
 ---
 
 ## Quick Reference
