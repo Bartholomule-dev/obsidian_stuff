@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9e99abb0fedfc1c9",
+        "id": "1251d9599ba515c4",
         "type": "tabs",
         "children": [
           {
-            "id": "1eeedfa1adcf9dea",
+            "id": "87d25a5544a20cb9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Born Below/Systems/Modals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Modals"
             }
           }
         ]
@@ -141,23 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "Born Below/Systems/Modals.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
-            }
-          },
-          {
-            "id": "ef6bef2b9e572a96",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
+              "title": "Outline of Modals"
             }
           },
           {
@@ -171,7 +161,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -191,51 +181,51 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1eeedfa1adcf9dea",
+  "active": "87d25a5544a20cb9",
   "lastOpenFiles": [
-    "Test.md",
-    "README.md",
-    "gemini-scribe/Prompts/example-expert.md",
+    "Born Below/Index.md",
+    "Untitled.canvas",
+    "Untitled 1.base",
+    "Untitled.base",
+    "Born Below/Components/InventoryManager.md",
+    "Modals.md",
+    "Born Below/Systems/Modals.md",
+    "Born Below/Data/Mortal Character Data.md",
+    "Born Below/Components/UnlockableManager.md",
+    "Born Below/Components/TournamentService.md",
+    "Born Below/Components/StoryStateManager.md",
+    "Born Below/Components/SimulationPhaseCoordinator.md",
+    "Born Below/Components/RosterManager.md",
+    "Born Below/Components/RewardDistributionService.md",
+    "Born Below/Components/RealmCoordinator.md",
+    "Born Below/Components/QuestManager.md",
+    "Born Below/Components/PlanningWorkflowService.md",
+    "Born Below/Components/PlanningPhaseManager.md",
+    "Born Below/Components/PersistenceManager.md",
+    "Born Below/Components/OpportunityGenerationService.md",
+    "Born Below/Components/OpportunityCooldownService.md",
+    "Born Below/Components/MortalCharacterService.md",
+    "Born Below/Components/MortalCharacterManager.md",
+    "Born Below/Components/MissionRewardService.md",
+    "Born Below/Components/MissionMeterService.md",
+    "Born Below/Components/MissionExecutorService.md",
+    "Born Below/Components/MissionBeatService.md",
+    "Born Below/Components/InterventionService.md",
+    "Born Below/Components/ExplorationService.md",
+    "Born Below/Data",
+    "Born Below/Systems",
+    "Born Below/Concepts",
+    "Born Below/Components",
+    "Born Below/Architecture",
+    "Born Below",
     "gemini-scribe/Prompts",
     "gemini-scribe/Agent-Sessions",
-    "gemini-scribe",
-    "Untitled.base",
-    "Rogue/Design so far.md",
-    "Rogue/refactors.md",
-    "Rogue/To Implement.md",
-    "Rogue/To implement2.md",
-    "Rogue/World Generation.md",
-    "sim/Setting.md",
-    "sim/Done stuff.md",
-    "sim/Game Design.md",
-    "Untitled 1.md",
-    "sim",
-    "Daily Logs/2025-07-25.md",
-    "Rogue",
-    "Game/Characters/Amice Abilities.md",
-    "Game/Characters/Amice Dryad Relationship.md",
-    "Game/Characters/Amice King Relationship.md",
-    "Game/Characters/Amice Questions.md",
-    "Game/Todo/Refactoring List.md",
-    "Game/Ideas/Crafting and Farming.md",
-    "Game/Ideas/Meta Progression.md",
-    "Game/Todo/Refactoring2.md",
-    "Game/Characters/Amice Relationship Growth.md",
-    "Game/Characters/Amice.md",
-    "Game/Ideas",
-    "Game/Characters/Sorrel.md",
-    "Game/Characters/The King of the Pale Court.md",
     "Male Pixel Art portrait8.png",
-    "Game/Characters/Luciana.md",
-    "Game/Todo",
     "Male Pixel Art portrait large8.png",
     "Female Pixel Art Portrait11.png",
-    "Untitled.canvas",
     "Female Pixel Art Portrait large11.png",
     "Game/Characters/Female Pixel Art Portrait2.png",
     "Game/Characters/Female Pixel Art Portrait11 1.png",
-    "Game/Characters/Female Pixel Art Portrait11.png",
-    "Game/Characters",
-    "Game"
+    "Game/Characters/Female Pixel Art Portrait11.png"
   ]
 }
