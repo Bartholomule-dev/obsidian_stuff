@@ -75,3 +75,6 @@ Result from other actions:
 - [[Event System]] - Event processing
 - [[Beats]] - MissionBeatTemplate usage
 - [[Autonomous Behavior]] - DemonActionTemplate triggers
+- [[Mission Beats]] - Beat content catalog
+- [[Cult Situations]] - CultEventTemplate content
+- [[GameState]] - Event context access

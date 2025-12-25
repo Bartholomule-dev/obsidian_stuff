@@ -2,6 +2,10 @@
 type: concept
 domain: demon
 status: stable
+tags:
+  - concept
+  - demon
+  - loyalty
 ---
 # Memory System
 

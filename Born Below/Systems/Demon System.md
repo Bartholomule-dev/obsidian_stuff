@@ -2,6 +2,10 @@
 type: system
 domain: demon
 status: stable
+tags:
+  - system
+  - demon
+  - core
 ---
 # Demon System
 

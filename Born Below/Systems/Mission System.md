@@ -2,6 +2,10 @@
 type: system
 domain: mission
 status: stable
+tags:
+  - system
+  - mission
+  - core
 ---
 # Mission System
 

@@ -2,6 +2,10 @@
 type: system
 domain: cult
 status: stable
+tags:
+  - system
+  - cult
+  - core
 ---
 # Cult System
 

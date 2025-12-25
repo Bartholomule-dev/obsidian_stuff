@@ -65,5 +65,7 @@ Modals are managed by `ModalManager` and displayed above all regions.
 
 ## Related
 
-- [[Week Flow]] - UI changes per phase
+- [[UI Widgets]] - Detailed widget documentation
 - [[Modals]] - Detailed modal documentation
+- [[Week Flow]] - UI changes per phase
+- [[GameState]] - State binding for widgets

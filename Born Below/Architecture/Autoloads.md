@@ -12,10 +12,10 @@ Global singletons that provide core infrastructure. These are the entry points f
 
 | Autoload | Purpose |
 |----------|---------|
-| **GameState** | Central access point for all facades |
+| **[[GameState]]** | Central access point for all facades |
 | **EventBus** | Signal hub for all game events |
-| **EventSystem** | Event loading, queuing, template registration |
-| **GameFlow** | Phase state machine |
+| **[[Event System\|EventSystem]]** | Event loading, queuing, template registration |
+| **[[GameFlow]]** | Phase state machine |
 | **CorruptionManager** | Corruption state, soul essence |
 | **InterventionRiskMeter** | Divine intervention tracking |
 | **GameLogger** | Logging infrastructure |

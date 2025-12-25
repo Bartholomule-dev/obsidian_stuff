@@ -2,6 +2,10 @@
 type: catalog
 domain: content
 status: stable
+tags:
+  - content
+  - catalog
+  - hub
 ---
 # Content Catalog
 
