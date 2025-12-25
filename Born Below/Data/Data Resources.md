@@ -14,15 +14,19 @@ Game content is defined in `.tres` resource files with corresponding GDScript cl
 
 | Class | Purpose |
 |-------|---------|
-| **DemonData** | Demon attributes, rank, personality, stats, soul cost |
+| **[[DemonData]]** | Demon attributes, rank, personality, stats, soul cost |
+
+See also: [[Starting Demons]]
 
 ### Mortal Characters
 **Location:** `data/mortal_characters/`
 
 | Class | Purpose |
 |-------|---------|
-| **MortalCharacterData** | Character needs, awareness, corruption state, vulnerabilities |
+| **[[Mortal Character Data]]** | Character needs, awareness, corruption state, vulnerabilities |
 | **CorruptionBenefitData** | Rewards for corrupting specific characters |
+
+See also: [[Demo Targets]]
 
 ### Activities
 **Location:** `data/activities/`, `data/planning/`
@@ -39,7 +43,9 @@ Game content is defined in `.tres` resource files with corresponding GDScript cl
 | Class | Purpose |
 |-------|---------|
 | **OpportunityCardData** | Mission opportunity templates |
-| **MissionStateData** | Runtime mission state (meters, progress) |
+| **[[MissionStateData]]** | Runtime mission state (meters, progress) |
+| **[[HellWeeklyPlan]]** | Weekly assignments and allocations |
+| **[[CultState]]** | Cult meters and identity |
 
 ### Items
 **Location:** `data/items/`, `data/infernal_items/`

@@ -2,6 +2,10 @@
 type: concept
 domain: core
 status: stable
+tags:
+  - concept
+  - flow
+  - core
 ---
 # Week Flow
 

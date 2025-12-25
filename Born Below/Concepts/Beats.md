@@ -2,6 +2,10 @@
 type: concept
 domain: mission
 status: stable
+tags:
+  - concept
+  - mission
+  - narrative
 ---
 # Beats
 

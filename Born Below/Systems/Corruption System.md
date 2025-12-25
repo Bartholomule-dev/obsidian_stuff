@@ -2,6 +2,10 @@
 type: system
 domain: corruption
 status: stable
+tags:
+  - system
+  - corruption
+  - core
 ---
 # Corruption System
 

@@ -2,6 +2,10 @@
 type: index
 domain: root
 status: stable
+tags:
+  - index
+  - hub
+  - navigation
 ---
 # Born Below
 
@@ -26,6 +30,8 @@ A demon-raising corruption simulator built in Godot 4.5 with GDScript.
 - [[Managers]] - State owners (21+ managers)
 - [[Services]] - Domain logic (49+ services)
 - [[Autoloads]] - Global singletons
+- [[GameState]] - Central state hub
+- [[GameFlow]] - Phase state machine
 
 ### Core Systems
 - [[Demon System]] - Demon mechanics, progression, moods, quests
@@ -38,6 +44,8 @@ A demon-raising corruption simulator built in Godot 4.5 with GDScript.
 - [[Event System]] - Unified events, templates, DSL
 - [[Economy System]] - Soul essence, income, costs
 - [[UI System]] - Modals, widgets, regions
+- [[UI Widgets]] - Reusable UI components
+- [[Modals]] - Full-screen overlays
 
 ### Demon Mechanics
 - [[Seven Sins]] - Core stat system
@@ -63,14 +71,23 @@ A demon-raising corruption simulator built in Godot 4.5 with GDScript.
 
 ### Game Content
 - [[Content Catalog]] - Complete content inventory
-- [[Verbs]] - Demon abilities (13+)
+- [[Demo Targets]] - Knight, Queen, Bishop profiles
+- [[Starting Demons]] - Available demon roster (10)
 - [[Corruption Schemes]] - Mission definitions (21)
+- [[Verbs]] - Demon abilities (13+)
 - [[Mission Beats]] - Narrative decision points (30+)
 - [[Training Activities]] - Stat improvement (14)
 - [[Explorations]] - Domain maps (5)
 - [[Tournaments]] - Combat gauntlets (3)
 - [[Weekly Activities]] - Rest and recovery (4)
 - [[Cult Situations]] - Cult narrative events
+
+### Data Resources
+- [[Data Resources]] - Resource overview
+- [[DemonData]] - Demon data structure
+- [[MissionStateData]] - Mission runtime state
+- [[CultState]] - Cult meters and identity
+- [[HellWeeklyPlan]] - Weekly planning data
 
 ---
 
