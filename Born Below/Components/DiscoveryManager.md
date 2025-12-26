@@ -18,6 +18,7 @@ DiscoveryManager tracks intelligence gathered about mortal characters during mis
 - Track discovery expiration
 - Allow consumption of discoveries for bonuses
 - Index discoveries for quick lookup
+- **Generate exploration discoveries** (added Dec 2025)
 
 ## State
 
@@ -34,6 +35,8 @@ DiscoveryManager tracks intelligence gathered about mortal characters during mis
 | `get_active_discoveries_for_target()` | Get all valid discoveries |
 | `consume_discovery()` | Use discovery for bonus |
 | `expire_old_discoveries()` | Clean up stale intel |
+| `try_generate_discovery()` | Generate exploration discovery by chance |
+| `generate_discovery_for_node()` | Create discovery for specific node type |
 
 ## Dependencies
 

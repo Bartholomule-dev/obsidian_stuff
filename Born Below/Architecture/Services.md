@@ -67,8 +67,10 @@ SORT domain
 - TournamentController - Tournament flow
 
 ### Exploration Services
-- ExplorationService - Procedural maps
-- ExplorationCoordinator - Exploration orchestration
+- ExplorationService - Procedural maps, lifecycle orchestration
+- ExplorationCoordinator - Exploration public interface
+- NodeEncounterResolver - Node type resolution (11 types)
+- BuffEffectProcessor - Buff and curse effect application
 
 ### Planning Services
 - PlanningWorkflowService - Training/mission workflows
