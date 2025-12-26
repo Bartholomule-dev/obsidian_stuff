@@ -89,13 +89,13 @@ Priority areas identified from codebase analysis (December 2025).
 
 ### Critical: God Classes (Decomposition Needed)
 
-| File | Lines | Issue |
-|------|-------|-------|
-| `ExplorationService.gd` | 1,212 | Map generation + encounters + buffs + UI coordination |
-| `DemonMoodService.gd` | 1,144 | Happiness + energy + stress (3 distinct systems) |
-| `DemonMemoryService.gd` | 1,045 | Memory CRUD + decay + loyalty + hardcoded templates |
-| `SimulationPhaseCoordinator.gd` | 920 | 20 dependencies, 4 embedded phase executors |
-| `ExplorationMapUI.gd` | 1,330 | 5 UI concerns, 43 methods, 2 cache systems |
+| File                            | Lines | Issue                                                 |
+| ------------------------------- | ----- | ----------------------------------------------------- |
+| `ExplorationService.gd`         | 1,212 | Map generation + encounters + buffs + UI coordination |
+| `DemonMoodService.gd`           | 1,144 | Happiness + energy + stress (3 distinct systems)      |
+| `DemonMemoryService.gd`         | 1,045 | Memory CRUD + decay + loyalty + hardcoded templates   |
+| `SimulationPhaseCoordinator.gd` | 920   | 20 dependencies, 4 embedded phase executors           |
+| `ExplorationMapUI.gd`           | 1,330 | 5 UI concerns, 43 methods, 2 cache systems            |
 
 **Recommended splits:**
 - ExplorationService → MapGenerator + EncounterResolver + BuffCalculator
