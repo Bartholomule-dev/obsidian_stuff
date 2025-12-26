@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1251d9599ba515c4",
+        "id": "c6d08d10c332b927",
         "type": "tabs",
         "children": [
           {
-            "id": "87d25a5544a20cb9",
+            "id": "9c6ee90df9eab09c",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Born Below/Status/Roadmap.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Roadmap"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 407.5
   },
   "right": {
     "id": "afc14ebec7ee7fda",
@@ -137,12 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Born Below/Status/Roadmap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Roadmap"
             }
           },
           {
@@ -176,45 +181,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "87d25a5544a20cb9",
+  "active": "9c6ee90df9eab09c",
   "lastOpenFiles": [
-    "Born Below/Content/Mission Beats.md",
-    "Born Below/Content/Tournaments.md",
-    "Born Below/Content/Weekly Activities.md",
-    "Born Below/Content/Verbs.md",
-    "Born Below/Content/Content Catalog.md",
-    "Born Below/Concepts/Beats.md",
-    "Born Below/Content/Training Activities.md",
-    "Born Below/Content/Explorations.md",
-    "Born Below/Content/Cult Situations.md",
-    "Born Below/Content/Corruption Schemes.md",
-    "Born Below/Content",
-    "Born Below/Components/EncounterResolutionService.md",
-    "Born Below/Components/WeekManager.md",
-    "Born Below/Components/VerbService.md",
-    "Born Below/Components/HellEconomyService.md",
-    "Born Below/Components/HeatCalculationService.md",
-    "Born Below/Components/DemonTrainingManager.md",
-    "Born Below/Components/DemonSlotManager.md",
-    "Born Below/Components/DemonLifecycleService.md",
-    "Born Below/Components/DemonHistoryService.md",
-    "Born Below/Components/DemonFeedbackService.md",
-    "Born Below/Components/AutonomousBehaviorService.md",
-    "Born Below/Systems/Modals.md",
-    "Born Below/Index.md",
-    "Untitled.canvas",
     "Untitled 1.base",
     "Untitled.base",
-    "Born Below/Components/InventoryManager.md",
-    "Modals.md",
-    "Born Below/Data/Mortal Character Data.md",
+    "Born Below/Index.md",
+    "Born Below/Components/StoryFacade.md",
+    "Born Below/Concepts/Need Recovery.md",
+    "Born Below/Systems/Cult System.md",
+    "Born Below/Systems/Demon System.md",
+    "Born Below/Content/Event Packs.md",
+    "Born Below/Design/Risk-Reward Balance.md",
+    "Born Below/Status/Roadmap.md",
+    "Born Below/Status/Known Issues.md",
+    "Born Below/Design/Demon Economy.md",
+    "Untitled.canvas",
+    "Born Below/Design/Corruption Philosophy.md",
+    "Born Below/Status",
+    "Born Below/Development/Testing Guide.md",
+    "Born Below/Development/Common Patterns.md",
+    "Born Below/Development/Adding a New Demon.md",
+    "Born Below/Development/Adding a New Scheme.md",
+    "Born Below/Development",
+    "Born Below/Design",
+    "Born Below/Systems/UI Widgets.md",
+    "Born Below/Data/MissionStateData.md",
+    "Born Below/Data/HellWeeklyPlan.md",
+    "Born Below/Data/DemonData.md",
+    "Born Below/Data/CultState.md",
+    "Born Below/Content/Starting Demons.md",
+    "Born Below/Content/Demo Targets.md",
+    "Born Below/Components/GameState.md",
+    "Born Below/Components/GameFlow.md",
+    "Born Below/Content/Mission Beats.md",
+    "Born Below/Content",
     "Born Below/Data",
     "Born Below/Systems",
     "Born Below/Concepts",
     "Born Below/Components",
-    "Born Below/Architecture",
-    "Born Below",
-    "gemini-scribe/Prompts",
     "Male Pixel Art portrait8.png",
     "Male Pixel Art portrait large8.png",
     "Female Pixel Art Portrait11.png",
