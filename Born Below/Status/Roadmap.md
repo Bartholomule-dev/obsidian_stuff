@@ -83,6 +83,76 @@ The demo showcases core systems with three corruption targets (Knight, Queen, Bi
 
 ---
 
+## Technical Debt & Refactoring
+
+Priority areas identified from codebase analysis (December 2025).
+
+### Critical: God Classes (Decomposition Needed)
+
+| File | Lines | Issue |
+|------|-------|-------|
+| `ExplorationService.gd` | 1,212 | Map generation + encounters + buffs + UI coordination |
+| `DemonMoodService.gd` | 1,144 | Happiness + energy + stress (3 distinct systems) |
+| `DemonMemoryService.gd` | 1,045 | Memory CRUD + decay + loyalty + hardcoded templates |
+| `SimulationPhaseCoordinator.gd` | 920 | 20 dependencies, 4 embedded phase executors |
+| `ExplorationMapUI.gd` | 1,330 | 5 UI concerns, 43 methods, 2 cache systems |
+
+**Recommended splits:**
+- ExplorationService → MapGenerator + EncounterResolver + BuffCalculator
+- DemonMoodService → HappinessState + StressState + EnergyState
+- DemonMemoryService → MemoryDecayProcessor + LoyaltyCalculator + data file for templates
+- SimulationPhaseCoordinator → HellPhaseExecutor + MortalPhaseExecutor + DivinePhaseExecutor
+
+### Critical: Test Coverage Gaps
+
+| Layer | Tested | Gap | Risk |
+|-------|--------|-----|------|
+| **Managers** | 5/21 | 76% untested | State corruption undetected |
+| **Facades** | 3/10 | 70% untested | API regressions undetected |
+| Services | 37/50 | 26% untested | Medium risk |
+
+**Highest priority untested code:**
+- [ ] `InventoryManager` (673 lines) - game economy
+- [ ] `PlanningFacade` (523 lines) - mission system API
+- [ ] `CorruptionFacade` (354 lines) - victory condition
+- [ ] `DemonManagementFacade` (482 lines) - demon interaction API
+
+### High: Architectural Violations
+
+**Facade Bypasses (14+ instances):**
+UI code directly accessing managers instead of facades.
+- `QuestForecasting.gd` - chains through roster_manager → demon_manager → progression
+- `DemonCardWidget.gd` - direct manager access
+- `WeeklyPlannerPanel.gd` - mixed facade/manager access
+
+**Service Self-Creation (7 instances):**
+- `SimulationPhaseCoordinator` creates 4 services on-demand
+- `MissionExecutorService` creates meter/beat services internally
+- Facades creating services (should be injected via GameStateInitializer)
+
+**Dead Code:**
+- `WeeklyPlannerPanel.gd:174-177` connects to non-existent GameState signals
+
+### High: Oversized Facades
+
+| Facade | Lines | Methods | Recommendation |
+|--------|-------|---------|----------------|
+| `PlanningFacade` | 523 | 38 | Split: ThreatIntel + OpportunityBoard + ActivityPlanning |
+| `DemonManagementFacade` | 482 | 58 | Split: Progression + Slots + core Roster |
+
+### Medium: Manager Boundary Confusion
+
+`RosterManager` (514 lines) and `DemonManager` (455 lines) have overlapping responsibilities. Clarify ownership boundaries.
+
+### Refactoring Priority Order
+
+1. **Immediate:** Add tests for InventoryManager, PlanningFacade, CorruptionFacade
+2. **Short-term:** Decompose ExplorationService and DemonMoodService
+3. **Medium-term:** Fix facade bypasses in UI, inject services properly
+4. **Ongoing:** Split oversized facades as touched
+
+---
+
 ## Planned Features
 
 ### Near Term
